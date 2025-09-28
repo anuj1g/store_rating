@@ -1,7 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-
-const Rating = sequelize.define('Rating', {
+module.exports = (sequelize, { DataTypes }) => {
+  const Rating = sequelize.define('Rating', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -58,5 +56,5 @@ const Rating = sequelize.define('Rating', {
     }
   ]
 });
-
-module.exports = Rating;
+  return Rating;
+};

@@ -132,18 +132,8 @@ const startServer = async () => {
   }
 };
 
-// Compress all responses
-autoCompress = require('express-auto-compress');
-app.use(autoCompress({
-  filter: () => true,
-  customCompressions: [{
-    encodingName: 'gzip',
-    onCompress: (content, compressionCallback) => {
-      return compression.gzip(content, compressionCallback);
-    }
-  }],
-  threshold: 1024 // Only compress responses larger than 1KB
-}));
+// Compress all responses using standard middleware
+app.use(compression());
 
 // API routes
 app.use('/api/v1/auth', authRoutes);

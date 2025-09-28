@@ -1,7 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
-
-const Store = sequelize.define('Store', {
+module.exports = (sequelize, { DataTypes }) => {
+  const Store = sequelize.define('Store', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,11 +22,11 @@ const Store = sequelize.define('Store', {
     }
   },
   address: {
-    type: DataTypes.STRING(400),
+    type: DataTypes.STRING(200),
     allowNull: false,
     validate: {
       notEmpty: true,
-      len: [1, 400]
+      len: [1, 200]
     }
   },
   avg_rating: {
@@ -72,5 +70,5 @@ const Store = sequelize.define('Store', {
     }
   ]
 });
-
-module.exports = Store;
+  return Store;
+};
